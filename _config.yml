@@ -1,5 +1,5 @@
 markdown: redcarpet
-name: 18F Guides Template
+name: 18F micro-purchase API
 exclude:
 - CONTRIBUTING.md
 - Gemfile
@@ -31,34 +31,23 @@ expand_nav: true
 # Navigation
 # List links that should appear in the site sidebar here
 navigation:
-- text: Introduction
+- text: Overview
   internal: true
-- text: Add a new page
-  url: add-a-new-page/
+- text: Quickstart
+  internal: false
+  url: quickstart/
+- text: API Reference
   internal: true
-  children:
-  - text: Make a child page
-    url: make-a-child-page/
-    internal: true
-- text: Add images
-  url: add-images/
+  url: api-reference/
+- text: Guides
   internal: true
-- text: Update the config file
-  url: update-the-config-file/
+  url: guides/
+- text: Tutorials
   internal: true
-  children:
-  - text: Understanding the `baseurl:` property
-    url: understanding-baseurl/
-    internal: true
-- text: GitHub setup
-  url: github-setup/
+  url: tutorials/
+- text: Client Libraries
   internal: true
-- text: Post your guide
-  url: post-your-guide/
-  internal: true
-- text: Advanced features
-  url: advanced-features/
-  internal: true
+  url: client-libraries/
 
 repos:
 - name: Guides Template
@@ -66,8 +55,8 @@ repos:
   url: https://github.com/18F/guides-template
 
 back_link:
-  url: "https://pages.18f.gov/guides/"
-  text: Read more 18F Guides
+  url: "https://micropurchase.18f.gov/"
+  text: micropurchase.18f.gov
 
 google_analytics_ua: UA-48605964-19
 

@@ -1,9 +1,13 @@
-## 18F Guides Template
+## 18F micro-purchase API
 
-This is a skeleton repo containing the
+This repo contains documentation for 18F's micro-purchase API.
+
+It's made out of the
 [CFPB/DOCter](https://github.com/CFPB/DOCter)-based
 [Jekyll](http://jekyllrb.com/) template for
 [18F Guides](http://18f.github.io/guides/).
+
+The instructions below will allow you to run a local copy of the static site.
 
 ### Getting started
 

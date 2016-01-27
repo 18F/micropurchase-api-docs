@@ -1,51 +1,75 @@
 ---
 permalink: /
-title: Introduction
+title: Overview
 ---
-Use this template to create [18F Guides](http://pages.18f.gov/guides/)
-and other 18F-branded documentation available on [18F
-Pages](https://pages.18f.gov/). It's structured like an 18F Guides guide,
-and it walks you through the process of creating and publishing an 18F Pages document based on
-the same theme.
 
-The template is derived from [CFPB/DOCter](https://github.com/CFPB/DOCter).
-It uses [Jekyll](http://jekyllrb.com/) as the rendering engine.
+This website is home to the documentation for 18F micro-purchase API.
 
-## Create a new guide/document
+From ["Open Source Micro-purchasing: An experiment in federal acquisition"](https://18f.gsa.gov/2015/10/13/open-source-micropurchasing/):
 
-To get started on a new guide (or other document based on this theme), 
-follow [the "Getting started" instructions in the 18F/guides-template GitHub
-repository](https://github.com/18F/guides-template/#getting-started) to create
-a local clone of this template.
+> 18F is an open-source team. We currently have hundreds of publicly available repositories, with dozens under active development. We've had numerous contributions from colleagues within government, and contributions from members of the public. But in the next few weeks, we are going to run an experiment: we want to contract for contributions. And we want to do it the 18F way.
 
-Once you've created a clone, click the _Add a New Page_ entry in the table of
-contents to begin the rest of the steps.
+Part of contracting the 18F way is ensuring that all systems are built modularly and with APIs as capable as the human interface. The [micro-purchase platform](https://micropurchase.18f.gov) itself is no exception. This means that all data and transactions that are accessible via the web UI can be accessed by software using the API.
 
-## Update an existing guide/document
+### Support
 
-__Note: You only need to do this if your existing guide or document is not already
-using the `guides_style_18f` gem or if it does not have an `18f-pages`
-branch.__
+If you are having trouble with the API, there are several ways to get help:
 
-Add the [`guides_style_18f` gem](https://github.com/18F/guides-style) to your
-guide's `Gemfile`, if it's not already present. You may also wish to copy the
-`./go` script from the template if your document doesn't already have one.
+- File an [issue](https://github.com/18F/micropurchase/issues/new).
+- Email us at micropurchase@gsa.gov.
 
-To receive layout updates, as well as any new styles or scripts associated
-with them, you will need to run `./go update_theme`. Or — if you aren't using
-a `./go` script — you can run `bundle update --source guides_style_18f`
-manually.)
+If there's anything missing or incorrect in the API documentation, please file an [issue](https://github.com/18F/micropurchase-api-docs/issues/new).
 
-If your repository already has a `gh-pages` branch, you can create an
-`18f-pages` branch from it by running these commands:
+As with any 18F API, it is our goal that the micro-purchase API adhere to our [API Standards](https://github.com/18f/api-standards). Please hold us accountable to these standards.
+
+### Current Version
+
+Currently there is no version of the API. Although the [18F team is currently split on the matter of API versioning](https://github.com/18F/api-standards/issues/5), we may or may not introduce versioning.
+
+Due to the architecture of the micro-purchase platform, the API and web UI share the exact same routes and resources. This coupling should, in theory, be a bulwark against wreckless, user-unfriendly, and backwards-incompatible changes to the API.
+
+Nevertheless, in the event we introduce versioning, the version will be declared in the request headers and never in the URL.
+
+### Schema
+
+All API access is over HTTPS and uses the `micropurchase.18f.gov` base URL. All data is sent and received using JSON.
+
+All API requests must have the following headers:
 
 ```
-$ git checkout -b 18f-pages gh-pages
-$ git push origin 18f-pages
+Accept: text/x-json
 ```
 
-Follow the instructions in _Update the Config File_ to update your
-`_config.yml` accordingly. You may also need to consult the _GitHub Setup_ and
-_Post Your Guide_ chapters to ensure your guide is correctly published to
-`pages.18f.gov` and linked from the main [18F
-Guides](http://pages.18f.gov/guides/) site.
+If in the future we version the API, the header will follow the format of:
+
+```
+Accept: application/vnd.micropurchase.v{VERSION_NUMBER}+json
+```
+
+### Parameters
+
+Currently, the only parameters accepted by the API are in POST requests. They should be encoded as JSON with the following content type in the request headers:
+
+```
+Content-Type: application/json
+```
+
+### Client Errors
+
+Errors will contain the appropriate HTTP status code as well as a JSON response containing an `error` key:
+
+```
+{
+  "error": "Bid amount too high"
+}
+```
+
+### Authentication
+
+Currently all authentication occurs via the GitHub API. Rather than the micro-purchase platform generate and store API keys, GitHub Personal API Tokens act as the API key. If you have created an account on the micro-purchase platform, you are signed up to use the API. All you need to do is generate a [GitHub Personal API Token](https://github.com/blog/1509-personal-api-tokens) (with no scopes) and put it in the request headers:
+
+```
+Api-Key: the-personal-api-token
+```
+
+Note that many routes do not require any authentication at all. These docs will note the authentication options for each route.
