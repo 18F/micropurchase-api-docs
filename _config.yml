@@ -34,7 +34,7 @@ navigation:
 - text: Overview
   internal: true
 - text: Quickstart
-  internal: false
+  internal: true
   url: quickstart/
 - text: API Reference
   internal: true
@@ -42,17 +42,14 @@ navigation:
 - text: Guides
   internal: true
   url: guides/
-- text: Tutorials
-  internal: true
-  url: tutorials/
 - text: Client Libraries
   internal: true
   url: client-libraries/
 
 repos:
-- name: Guides Template
-  description: Main repository
-  url: https://github.com/18F/guides-template
+- name: Micro-purchase API docs
+  description: documentation for the micro-purchase API
+  url: https://github.com/18F/micropurchase/api-docs
 
 back_link:
   url: "https://micropurchase.18f.gov/"

@@ -11,6 +11,12 @@ From ["Open Source Micro-purchasing: An experiment in federal acquisition"](http
 
 Part of contracting the 18F way is ensuring that all systems are built modularly and with APIs as capable as the human interface. The [micro-purchase platform](https://micropurchase.18f.gov) itself is no exception. This means that all data and transactions that are accessible via the web UI can be accessed by software using the API.
 
+This website is written with three types of audience-members in mind:
+
+- micro-purchase participants (e.g. vendors bidding on auctions)
+- the general public (e.g. journalists or anyone else who might want to track auctions via API)
+- 18F staff (the API contains admin functionality reserved for certain 18F staff members)
+
 ### Support
 
 If you are having trouble with the API, there are several ways to get help:
