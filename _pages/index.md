@@ -66,7 +66,7 @@ Errors will contain the appropriate HTTP status code as well as a JSON response 
 
 ### Authentication
 
-Currently all authentication occurs via the GitHub API. Rather than the micro-purchase platform generate and store API keys, GitHub Personal API Tokens act as the API key. If you have created an account on the micro-purchase platform, you are signed up to use the API. All you need to do is generate a [GitHub Personal API Token](https://github.com/blog/1509-personal-api-tokens) (with no scopes) and put it in the request headers:
+Currently all authentication occurs via the GitHub API. Rather than having the micro-purchase platform generate and store API keys, GitHub Personal API Tokens act as the API key. If you have created an account on the micro-purchase platform, you are signed up to use the API. All you need to do is generate a [GitHub Personal API Token](https://github.com/blog/1509-personal-api-tokens) (with no scopes) and put it in the request headers:
 
 ```
 Api-Key: the-personal-api-token
