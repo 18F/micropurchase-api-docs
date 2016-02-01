@@ -8,7 +8,7 @@ permalink: /quickstart/
 In your terminal, run the following curl command:
 
 ```
-$ curl https://micropurchase-staging.18f.gov/auctions -H "Accept: text/x-json"
+$ curl https://micropurchase.18f.gov/auctions -H "Accept: text/x-json"
 ```
 
 This returns a JSON string of all `auction` resources. Each `auction` resource contains its child `bid` and `bidder` resources.

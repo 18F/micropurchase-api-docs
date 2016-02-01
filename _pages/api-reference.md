@@ -105,7 +105,7 @@ curl -i \
   -H "Api-Key: [redacted api key]" \
   -H "Content-Type: application/json" \
   -X POST -d '{"bid": {"amount": 1000}}' \
-  https://micropurchase-staging.18f.gov/auctions/3/bids
+  https://micropurchase.18f.gov/auctions/3/bids
 ```
 
 Example response:
