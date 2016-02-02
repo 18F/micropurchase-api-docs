@@ -102,10 +102,10 @@ Example request:
 ```
 curl -i \
   -H "Accept: text/x-json" \
-  -H "Api-Key: [redacted api key]" \
+  -H "Api-Key: $MICROPURCHASE_API_KEY" \
   -H "Content-Type: application/json" \
   -X POST -d '{"bid": {"amount": 1000}}' \
-  https://micropurchase.18f.gov/auctions/3/bids
+  https://micropurchase-staging.18f.gov/auctions/1/bids
 ```
 
 Example response:
