@@ -30,31 +30,19 @@ As with any 18F API, it is our goal that the micro-purchase API adhere to our [A
 
 ### Current Version
 
-Currently there is no version of the API. Although the [18F team is currently split on the matter of API versioning](https://github.com/18F/api-standards/issues/5), we may or may not introduce versioning.
+API requests should always include a version in the URL and older versions will eventually be deprecated after new versions are introduced.
 
-Due to the architecture of the micro-purchase platform, the API and web UI share the exact same routes and resources. This coupling should, in theory, be a bulwark against wreckless, user-unfriendly, and backwards-incompatible changes to the API.
+The current version of the API is still in alpha and the version if `v0`
 
-Nevertheless, in the event we introduce versioning, the version will be declared in the request headers and never in the URL.
+### Requests
 
-### Schema
-
-All API access is over HTTPS and uses the `micropurchase.18f.gov` base URL. All data is sent and received using JSON.
-
-All API requests must have the following headers:
-
-```
-Accept: text/x-json
-```
-
-If in the future we version the API, the header will follow the format of:
-
-```
-Accept: application/vnd.micropurchase.v{VERSION_NUMBER}+json
-```
+All API access is over HTTPS and uses the `micropurchase.18f.gov/api/v0` base URL. All data is sent and received using JSON.
 
 ### Parameters
 
-Currently, the only parameters accepted by the API are in POST requests. They should be encoded as JSON with the following content type in the request headers:
+Some requests to view specific items (like a single auction) take the auction ID as a parameter in the request URL.
+
+For bidding, the amount to be bid is submitted as the body of a POST request. They should be encoded as JSON with the following content type in the request headers:
 
 ```
 Content-Type: application/json
