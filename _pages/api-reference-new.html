@@ -1,0 +1,54 @@
+---
+title: API Reference (New)
+permalink: /api-reference-new/
+---
+{% swagger load from url https://raw.githubusercontent.com/18F/micropurchase/develop/public/api/v0/swagger.json %}
+
+{% for path in swagger.paths %}
+<h3>{{ path.path }}</h3>
+{% for verb in path.verbs %}
+<h4>{{ verb.verb }}</h4>
+<p>{{ verb.description }}</p>
+
+{% if verb.example_json? %}
+<p>Example response:</p>
+
+{% highlight ruby %}
+{{ verb.example_json }}
+{% endhighlight %}
+{% endif %}
+
+<table>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Meaning</th>
+      <th>Return Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for response in verb.responses %}
+    <tr>
+      <td>{{ response.code }}</td>
+      <td>{{ response.description }}</td>
+      <td>{{ response.display_type }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endfor %}
+{% endfor %}
+
+<h3>Definitions</h3>
+
+{% for definition in swagger.definitions %}
+<h4>{{ definition.name }}</h4>
+
+<dl>
+  {% for property in definition.properties %}
+  <dt><code>{{ property.name }}</code>, <em>{{ property.display_type }}</em></dt>
+  <dd><strong>{{ property.title }}:</strong> {{ property.description }}</dd>
+  {% endfor %}
+</dl>
+{% endfor %}

@@ -2,7 +2,7 @@
 permalink: /
 title: Overview
 ---
-
+{% swagger load from url https://raw.githubusercontent.com/18F/micropurchase/develop/public/api/v0/swagger.json %}
 This website is home to the documentation for 18F micro-purchase API.
 
 From ["Open Source Micro-purchasing: An experiment in federal acquisition"](https://18f.gsa.gov/2015/10/13/open-source-micropurchasing/):
@@ -32,11 +32,11 @@ As with any 18F API, it is our goal that the micro-purchase API adhere to our [A
 
 API requests should always include a version in the URL and older versions will eventually be deprecated after new versions are introduced.
 
-The current version of the API is still in alpha and the version if `v0`
+The current version of the API is still in alpha.
 
 ### Requests
 
-All API access is over HTTPS and uses the `micropurchase.18f.gov/api/v0` base URL. All data is sent and received using JSON.
+All API access is over HTTPS and uses the `micropurchase.18f.gov{{ swagger.base_path }}` base URL. All data is sent and received using JSON.
 
 ### Parameters
 

@@ -8,6 +8,7 @@ exclude:
 - README.md
 - go
 - vendor
+- spec
 
 permalink: pretty
 highlighter: rouge
@@ -39,6 +40,9 @@ navigation:
 - text: API Reference
   internal: true
   url: api-reference/
+- text: API Reference (test)
+  internal: true
+  url: api-reference-new/
 - text: Guides
   internal: true
   url: guides/
