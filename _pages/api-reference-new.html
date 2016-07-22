@@ -2,9 +2,7 @@
 title: API Reference (New)
 permalink: /api-reference-new/
 ---
-{% swagger load from url https://raw.githubusercontent.com/18F/micropurchase/develop/public/api/v0/swagger.json %}
-
-{% for path in swagger.paths %}
+{% for path in site.data.swagger.paths %}
 <h3>{{ path.path }}</h3>
 {% for verb in path.verbs %}
 <h4>{{ verb.verb }}</h4>
@@ -42,7 +40,7 @@ permalink: /api-reference-new/
 
 <h3>Definitions</h3>
 
-{% for definition in swagger.definitions %}
+{% for definition in site.data.swagger.definitions %}
 <h4>{{ definition.name }}</h4>
 
 <dl>

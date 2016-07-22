@@ -1,5 +1,5 @@
-module SwaggerTags
-  class Object < Struct.new(:name, :hash)
+module SwaggerJekyll
+  class Schema::Object < SwaggerJekyll::Schema
     def to_liquid
       {
         'name' => name,
@@ -45,20 +45,12 @@ module SwaggerTags
 
         if hash.key?('properties')
           hash['properties'].each do |name, value|
-            @_properties[name] = SwaggerTags::Property.factory(name, value)
+            @_properties[name] = Schema.factory(name, value, specification)
           end
         end
       end
 
       @_properties
-    end
-
-    def self.factory(name, hash, specification)
-#      if hash['allOf']
-#        SwaggerTags::AllOf.new(name, hash, specification)
-#      else
-        SwaggerTags::Object.new(name, hash)
-#      end
     end
   end
 end

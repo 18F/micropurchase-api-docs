@@ -1,5 +1,5 @@
-module SwaggerTags
-  class StringProperty < SwaggerTags::Property
+module SwaggerJekyll
+  class Schema::String < Schema
     def display_type
       out = "string"
       out += " (#{format})" if format

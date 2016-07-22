@@ -1,10 +1,11 @@
-module SwaggerTags
+module SwaggerJekyll
   class Path
     attr_accessor :path, :verbs
 
-    def initialize(path, hash)
+    def initialize(path, hash, specification)
       @path = path
       @hash = hash
+      @specification = specification
     end
 
     def to_liquid
@@ -24,7 +25,7 @@ module SwaggerTags
       if @_verbs_hash.nil?
         @_verbs_hash = {}
         @hash.each do |path, hash|
-          @_verbs_hash[path] =SwaggerTags::Verb.new(path, hash)
+          @_verbs_hash[path] = Verb.new(path, hash, @specification)
         end
       end
 

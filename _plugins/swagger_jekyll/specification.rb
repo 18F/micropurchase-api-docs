@@ -1,4 +1,4 @@
-module SwaggerTags
+module SwaggerJekyll
   class Specification
     attr_accessor :json
 
@@ -26,7 +26,7 @@ module SwaggerTags
       if @_paths_hash.nil?
         @_paths_hash = {}
         @json['paths'].each do |name, value|
-          @_paths_hash[name] = SwaggerTags::Path.new(name, value)
+          @_paths_hash[name] = Path.new(name, value, self)
         end
       end
 
@@ -39,10 +39,10 @@ module SwaggerTags
 
     def definitions_hash
       if @_definitions_hash.nil?
-        @_definitions_hash = { }
+        @_definitions_hash = {}
 
         @json['definitions'].each do |name, value|
-          @_definitions_hash[name] = SwaggerTags::Object.factory(name, value, self)
+          @_definitions_hash[name] = Schema.factory(name, value, self)
         end
       end
 

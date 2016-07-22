@@ -1,9 +1,10 @@
-module SwaggerTags
+module SwaggerJekyll
   class Verb
     attr_accessor :verb, :responses
-    def initialize(verb, hash)
+    def initialize(verb, hash, specification)
       @verb = verb
       @hash = hash
+      @specification = specification
     end
 
     def to_liquid
@@ -32,7 +33,7 @@ module SwaggerTags
       if @_responses_hash.nil?
         @_responses_hash = {}
         @hash['responses'].each do |code, response_hash|
-          @_responses_hash[code] = SwaggerTags::Response.new(code, response_hash)
+          @_responses_hash[code] = Response.new(code, response_hash, @specification)
         end
       end
 

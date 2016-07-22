@@ -1,5 +1,5 @@
-module SwaggerTags
-  class NumberProperty < SwaggerTags::Property
+module SwaggerJekyll
+  class Schema::Number < SwaggerJekyll::Schema
     def display_type
       out = type
 

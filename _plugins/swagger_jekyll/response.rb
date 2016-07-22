@@ -1,5 +1,5 @@
-module SwaggerTags
-  class Response < Struct.new(:code, :hash)
+module SwaggerJekyll
+  class Response < Struct.new(:code, :hash, :specification)
     def description
       hash['description']
     end
@@ -16,7 +16,7 @@ module SwaggerTags
     end
 
     def response_type
-      SwaggerTags::Property.factory('FOO', hash['schema'])
+      Schema.factory(nil, hash['schema'], specification)
     end
   end
 end

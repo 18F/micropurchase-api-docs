@@ -1,7 +1,7 @@
-require_relative 'object'
+require_relative '../schema'
 
-module SwaggerTags
-  class AllOf < SwaggerTags::Object
+module SwaggerJekyll
+  class Schema::AllOf < Schema
     def initialize(name, hash, specification)
       super(name, hash)
       @specification = specification

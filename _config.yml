@@ -14,6 +14,9 @@ permalink: pretty
 highlighter: rouge
 incremental: true
 
+swagger:
+  json: https://raw.githubusercontent.com/18F/micropurchase/develop/public/api/v0/swagger.json
+
 sass:
   style: :compressed
 
