@@ -10,17 +10,22 @@ module SwaggerJekyll
     def to_liquid
       @hash.dup.merge(
         'responses' => responses,
-        'example_json?' => example_json?,
-        'example_json' => example_json_excerpt)
+        'sample_response' => sample_response)
     end
 
-    def example_json?
+    def sample_response?
       @hash.dig('responses', '200', 'examples', 'application/json')
     end
 
-    def example_json_excerpt
-      example = @hash.dig('responses', '200', 'examples', 'application/json')
-      example.to_json
+    def sample_response
+      if @_sample_response.nil?
+        example_json = @hash.dig('responses', '200', 'examples', 'application/json')
+        if example_json
+          @_sample_response = JSON.pretty_generate(example_json)
+        end
+      end
+
+      @_sample_response
     end
 
     def responses

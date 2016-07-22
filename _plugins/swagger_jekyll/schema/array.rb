@@ -5,7 +5,6 @@ module SwaggerJekyll
     end
 
     def element_type
-      puts hash.inspect
       @_element_type ||= Schema.factory(nil, hash['items'], specification)
     end
   end

@@ -1,16 +1,5 @@
 module SwaggerJekyll
   class Schema::Object < SwaggerJekyll::Schema
-    def to_liquid
-      {
-        'name' => name,
-        'display_type' => display_type,
-        'title' => title,
-        'description' => description,
-        'example' => example,
-        'properties' => properties
-      }
-    end
-
     def type
       'object'
     end

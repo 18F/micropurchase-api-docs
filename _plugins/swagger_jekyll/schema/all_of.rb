@@ -2,9 +2,12 @@ require_relative '../schema'
 
 module SwaggerJekyll
   class Schema::AllOf < Schema
-    def initialize(name, hash, specification)
-      super(name, hash)
-      @specification = specification
+    def type
+      'allOf'
+    end
+
+    def properties
+      hash['allOf'].map { |h| Schema.factory(nil, h, specification).properties }.flatten
     end
   end
 end

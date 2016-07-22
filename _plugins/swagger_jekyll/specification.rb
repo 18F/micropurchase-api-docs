@@ -41,8 +41,8 @@ module SwaggerJekyll
       if @_definitions_hash.nil?
         @_definitions_hash = {}
 
-        @json['definitions'].each do |name, value|
-          @_definitions_hash[name] = Schema.factory(name, value, self)
+        @json['definitions'].each do |name, hash|
+          @_definitions_hash[name] = Schema.factory(name, hash, self)
         end
       end
 

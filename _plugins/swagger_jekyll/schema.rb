@@ -6,7 +6,8 @@ module SwaggerJekyll
         'title' => title,
         'description' => description,
         'display_type' => display_type,
-        'example' => example
+        'example' => example,
+        'properties' => properties
       }
     end
 
@@ -34,10 +35,14 @@ module SwaggerJekyll
       ''
     end
 
+    def properties
+      []
+    end
+
     def self.factory(name, hash, specification)
-      if hash['$ref']
+      if hash.key?('$ref')
         Reference.new(name, hash, specification)
-      elsif hash['allOf']
+      elsif hash.key?('allOf')
         Schema::AllOf.new(name, hash, specification)
       else
         case hash['type']

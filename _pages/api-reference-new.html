@@ -6,13 +6,13 @@ permalink: /api-reference-new/
 <h3>{{ path.path }}</h3>
 {% for verb in path.verbs %}
 <h4>{{ verb.verb }}</h4>
-<p>{{ verb.description }}</p>
+<p>{{ verb.description | markdownify }}</p>
 
-{% if verb.example_json? %}
+{% if verb.sample_response %}
 <p>Example response:</p>
 
 {% highlight ruby %}
-{{ verb.example_json }}
+{{ verb.sample_response }}
 {% endhighlight %}
 {% endif %}
 

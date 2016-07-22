@@ -8,8 +8,6 @@ module SwaggerJekyll
       @specification = specification
 
       fail "This isn't a reference: #{hash.inspect}" unless hash['$ref']
-
-      @pointer = Hana::Pointer.new(hash['$ref'])
     end
 
     def to_liquid
@@ -23,9 +21,19 @@ module SwaggerJekyll
       @name || ''
     end
 
+    def ref
+      @hash['$ref'].gsub(/^#/, '')
+    end
+
     def dereference
-      target = @pointer.eval(@specification.hash)
-      Schema.factory(@name, target, specification)
+      pointer = Hana::Pointer.new(ref)
+      target = pointer.eval(@specification.json)
+      raise "Unable to dereference #{ref}" if target.nil?
+      Schema.factory(@name, target, @specification)
+    end
+
+    def properties
+      dereference.properties
     end
 
     def display_type
