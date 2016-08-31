@@ -1,3 +1,7 @@
+THIS REPO IS NOW DEPRECATED.
+
+Visit https://micropurchase.18f.gov/api to see the latest docs.
+
 ## 18F micro-purchase API
 
 This repo contains documentation for 18F's micro-purchase API.
